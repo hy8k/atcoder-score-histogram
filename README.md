@@ -1,0 +1,1 @@
+# atcoder-score-histogram

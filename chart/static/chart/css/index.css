@@ -1,0 +1,167 @@
+html {
+    -moz-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    font-size: 75%;
+    background-color: #4facb8;
+    padding: 0.1rem 1rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+h1 a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    font-family: Verdana, "MS MS Pゴシック", sans-serif;
+    font-size: 90%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.form {
+    margin-bottom: 3rem;
+    height: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.form-fields {
+    width: 70%;
+    height: 3rem;
+}
+
+.form-field {
+    margin-right: 1em;
+    height: 100%;
+}
+
+.form-field-label {
+    height: 1.2rem;
+}
+
+.form-field-textbox {
+    width: 100%;
+    height: 1.8rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    padding: 0 4px;
+}
+
+.form-btn {
+    width: 30%;
+    height: 3rem;
+    text-align: center;
+}
+
+.form-btn .btn {
+    width: 80%;
+    font-weight: normal;
+}
+
+.error-message {
+    color: red;
+}
+
+.tab-bar {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0px;
+}
+
+.tab {
+    border: 1px solid transparent;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 1em;
+    cursor: pointer;
+    color: blue;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.tab.active {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+
+.charts {
+    margin-bottom: 1em;
+}
+
+.chart {
+    display: none;
+}
+
+.chart.show {
+    display: block;
+}
+
+.btn {
+    margin: auto;
+    height: 100%;
+    background-color: #4facb8;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: background-color .01s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #3f868f;
+}
+
+.btn:disabled {
+    background-color: #a6f5ff;
+    cursor: default;
+}
+
+.chart-info {
+    text-align: right;
+    margin-bottom: 3px;
+}
+
+.chart-info .btn {
+    height: 2.5em;
+}
+
+#task-name {
+    font-size: large;
+    text-align: center;
+}
+
+#tweet-field {
+    text-align: right;
+}
+
+#id_contest {
+    width: 100%;
+    height: 1.8rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    padding: 0 2px;
+}

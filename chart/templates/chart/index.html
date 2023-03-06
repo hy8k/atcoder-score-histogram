@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>AtCoder Score Histogram(β)</title>
+        <link rel="stylesheet" href="{% static "chart/css/index.css" %}"/>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="/ac-score-hist" style="text-decoration:none; color=white;">AtCoder Score Histogram(β)</a>
+            </h1>
+        </header>
+        <main>
+            <form action="{% url "chart:index" %}" method="get" class="form">
+                <div class="form-fields">
+                    <div class="form-field">
+                        <div class="form-field-label">{{ form.contest.label }}</div>
+                        {{ form.contest }}
+                    </div>
+                </div>
+                <div class="form-btn">
+                    <button type="submit" class="btn">Display</button>
+                </div>
+                {% if invalid_contest %}<p class="error-message">Invalid contest name</p>{% endif %}
+            </form>
+            {% if standings_info %}
+                <div class="form">
+                    <div class="form-fields">
+                        <div class="form-field">
+                            <div class="form-field-label">Usernames</div>
+                            <input type="text"
+                                   class="form-field-textbox"
+                                   id="user-names"
+                                   placeholder="username1, username2, ..."/>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button type="button" class="btn" id="btn-update-chart">Update</button>
+                    </div>
+                    <p class="error-message" id="invalid_users"></p>
+                </div>
+                <ul class="tab-bar">
+                    {% for task_screen_name, task_info in standings_info.task_info.items %}
+                        <li class="tab" value="{{ task_screen_name }}">{{ task_info.assignment }}</li>
+                    {% endfor %}
+                </ul>
+                <div>
+                    <p id="task-name"></p>
+                    <div class="chart-info">
+                        <p id="update-time"></p>
+                        <button type="button"
+                                class="btn"
+                                id="btn-update-standings">Refresh</button>
+                        <button type="button" class="btn" id="btn-download-plot">Download plot as PNG</button>
+                    </div>
+                    <div id="tweet-field">
+                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                           class="twitter-share-button"
+                           id="btn-tweet"
+                           data-show-count="false"
+                           data-lang="en"
+                           data-text="Score histogram of {{ standings_info.contest_info.name }}（画像を貼り付けて，この文は消してください……）"
+                           data-size="large"
+                           data-hashtags="{{ standings_info.contest_info.screen_name }},AtCoder,ac_heuristic_score_histogram">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+                <div class="charts">
+                    {% for task_screen_name in standings_info.task_info %}
+                        <div class="chart" id={{ task_screen_name }}>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="description">
+                <h2>About</h2>
+                <p>AtCoder Heuristic Contestなどのヒューリスティックコンテストの順位表から，得点分布を表すヒストグラムを生成します。</p>
+                <h2>Note</h2>
+                <ul>
+                    <li>Usernamesにカンマ区切りでAtCoderユーザー名を入力すると，ヒストグラム上にユーザーを重ねて表示します。</li>
+                    <li>1回以上の提出があったユーザーのみを集計しています。</li>
+                    <li>直近のコンテストについて得点情報を約10分毎に更新しています。適宜Refreshを押下して最新の情報に更新してください。</li>
+                </ul>
+            </div>
+        </main>
+        {% if standings_info %}
+            <script type="text/javascript"
+                    src=
+                    {% static "chart/js/plotly/plotly-2.14.0.min.js" %}></script>
+            <script id="standings-info">let standingsInfo = {{ standings_info|safe }};</script>
+            <script type="text/javascript" src={% static "chart/js/plot.js" %}></script>
+        {% endif %}
+    </body>
+</html>
