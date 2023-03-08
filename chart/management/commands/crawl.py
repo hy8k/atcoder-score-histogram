@@ -23,10 +23,10 @@ class Command(BaseCommand):
             for contest in contests:
                 if contest['auto_update'] == True or options['all']:
                     contest_screen_name = contest['contest_screen_name']
-                    standing_json = info.get_standings_json(
+                    standings_json = info.get_standings_json(
                         contest_screen_name)
                     info.update_chart_info(
-                        contest_screen_name, None, standing_json)
+                        contest_screen_name, None, standings_json)
 
             # 次のAHCがあれば取得する
             latest_contest_screen_name = contests[-1]['contest_screen_name']
@@ -75,7 +75,7 @@ class Command(BaseCommand):
 
                 if contest['auto_update_all'] == True:
                     info.update_chart_info(
-                        contest_screen_name, None, standing_json)
+                        contest_screen_name, None, standings_json)
                 elif contest['tasks'] != []:
                     task_list = set()
                     for task in contest['tasks']:
