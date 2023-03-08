@@ -1,7 +1,7 @@
 html {
-    -moz-text-size-adjust:100%;
-    -webkit-text-size-adjust:100%;
-    -ms-text-size-adjust:100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -31,6 +31,10 @@ main {
     font-size: 90%;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+table {
+    text-align: left;
 }
 
 .form {
@@ -139,23 +143,44 @@ main {
     cursor: default;
 }
 
-.chart-info {
+.chart-buttons {
     text-align: right;
-    margin-bottom: 3px;
 }
 
-.chart-info .btn {
-    height: 2.5em;
+.chart-buttons>* {
+    height: 1.9em;
+    margin-bottom: 1em;
+    vertical-align: bottom;
 }
 
-#task-name {
-    font-size: large;
-    text-align: center;
+.chart-info {
+}
+
+@media screen and (min-width:900px) {
+    .chart-info {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: -1.8em;
+    }
+}
+
+.chart-info>* {
+    flex: 1
+}
+
+.task-info {
+    margin-bottom: 2em;
+}
+
+.task-info>p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #tweet-field {
-    text-align: right;
+    display: inline-block;
 }
+
 
 #id_contest {
     width: 100%;

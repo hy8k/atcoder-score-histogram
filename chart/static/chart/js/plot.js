@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            document.getElementById('task-name').textContent = (taskName == '' ? '' : taskAssignment + ' - ' + taskName);
-            document.getElementById('update-time').textContent = 'Last Update: ' + (new Date(taskUpdateTime)).toLocaleString();
+            document.getElementById('task-name').textContent = (taskName == '' ? '' : taskName);
+            document.getElementById('update-time').textContent = (new Date(taskUpdateTime)).toLocaleString();
 
             Plotly.newPlot(taskScreenName, data, layout, config);
         }

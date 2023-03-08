@@ -47,24 +47,32 @@
                         <li class="tab" value="{{ task_screen_name }}">{{ task_info.assignment }}</li>
                     {% endfor %}
                 </ul>
-                <div>
-                    <p id="task-name"></p>
-                    <div class="chart-info">
-                        <p id="update-time"></p>
-                        <button type="button"
-                                class="btn"
-                                id="btn-update-standings">Refresh</button>
-                        <button type="button" class="btn" id="btn-download-plot">Download plot as PNG</button>
+                <div class="chart-info">
+                    <div class="task-info">
+                        <table>
+                            <tr>
+                                <th>Task Name:</th>
+                                <th id="task-name"></th>
+                            </tr>
+                            <tr>
+                                <th>Last Update:</th>
+                                <th id="update-time"></th>
+                            </tr>
+                        </table>
                     </div>
-                    <div id="tweet-field">
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-                           class="twitter-share-button"
-                           id="btn-tweet"
-                           data-show-count="false"
-                           data-lang="en"
-                           data-text="Score histogram of {{ standings_info.contest_info.name }}（画像を貼り付けて，この文は消してください……）"
-                           data-size="large"
-                           data-hashtags="{{ standings_info.contest_info.screen_name }},AtCoder,ac_score_histogram">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <div class="chart-buttons">
+                        <button type="button" class="btn" id="btn-update-standings">Refresh</button>
+                        <button type="button" class="btn" id="btn-download-plot">Download plot as PNG</button>
+                        <div id="tweet-field">
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                               class="twitter-share-button"
+                               id="btn-tweet"
+                               data-show-count="false"
+                               data-lang="en"
+                               data-text="Score histogram of {{ standings_info.contest_info.name }}（画像を貼り付けて，この文は消してください……）"
+                               data-size="large"
+                               data-hashtags="{{ standings_info.contest_info.screen_name }},AtCoder,ac_score_histogram">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
                     </div>
                 </div>
                 <div class="charts">
@@ -87,8 +95,7 @@
         </main>
         {% if standings_info %}
             <script type="text/javascript"
-                    src=
-                    {% static "chart/js/plotly/plotly-2.14.0.min.js" %}></script>
+                    src="{% static "chart/js/plotly/plotly-2.14.0.min.js" %}"></script>
             <script id="standings-info">let standingsInfo = {{ standings_info|safe }};</script>
             <script type="text/javascript" src={% static "chart/js/plot.js" %}></script>
         {% endif %}
