@@ -157,7 +157,6 @@ table {
     .chart-info {
         display: flex;
         flex-direction: row;
-        margin-bottom: -1.8em;
     }
 }
 
@@ -182,6 +181,7 @@ table {
 #tweet-field {
     display: block;
     text-align: right;
+    margin-bottom: 1.5em;
 }
 
 
