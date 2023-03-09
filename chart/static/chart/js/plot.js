@@ -90,7 +90,7 @@ function drawChart(taskScreenName, chartArea, standingsInfo) {
                 text: "Frequency"
             }
         },
-        title: chartArea === 'chart-for-png' ? taskAssignment + ' - ' + taskName : '',
+        title: chartArea === 'chart-for-png' ? 'Problem ' + taskAssignment : '',
         shapes: [],
         margin: {
             l: 50,
