@@ -42,7 +42,7 @@
                     <div class="form-btn">
                         <button type="button" class="btn" id="btn-update-chart">Update</button>
                     </div>
-                    <p class="error-message" id="invalid_users"></p>
+                    <p class="error-message" id="invalid-users"></p>
                 </div>
                 <ul class="tab-bar">
                     {% for task_screen_name, task_info in standings_info.task_info.items %}
@@ -82,6 +82,7 @@
                         <div class="chart" id={{ task_screen_name }}>
                         </div>
                     {% endfor %}
+                    <div class="chart" id="chart-for-png" hidden></div>
                 </div>
             {% endif %}
             <div class="description">
