@@ -33,9 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function tabSwitch() {
             const arrayTabs = Array.prototype.slice.call(tabList);
             const index = arrayTabs.indexOf(this);
-            const contestScreenName = standingsInfo['contest_info']['name'];
             const taskScreenName = this.getAttribute('value');
-            const tweetHTML = '<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"class="twitter-share-button"id="btn-tweet"data-show-count="false"data-lang="en"data-text="' + contestScreenName + '"data-size="large"data-hashtags="AtCoder,ac_standings_histogram">Tweet</a>';
 
             document.getElementsByClassName('active')[0].classList.remove('active');
             this.classList.add('active');
@@ -52,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         async function updateStandingsInfo() {
             const contestScreenName = standingsInfo['contest_info']['screen_name'];
-            let response = await fetch('/ac-score-hist/?contest=' + contestScreenName + '&data');
+            let response = await fetch(formActionURL + '?contest=' + contestScreenName + '&data');
 
             if (response.ok) {
                 let newStandingsInfo = await response.json();

@@ -10,7 +10,9 @@
     <body>
         <header>
             <h1>
-                <a href="/ac-score-hist/" style="text-decoration:none; color=white;">AtCoder Score Histogram(β)</a>
+                <a href="{% url "chart:index" %}"
+                   style="text-decoration:none;
+                          color=white">AtCoder Score Histogram(β)</a>
             </h1>
         </header>
         <main>
@@ -96,7 +98,10 @@
         {% if standings_info %}
             <script type="text/javascript"
                     src="{% static "chart/js/plotly/plotly-2.14.0.min.js" %}"></script>
-            <script id="standings-info">let standingsInfo = {{ standings_info|safe }};</script>
+            <script>
+                const formActionURL = "{% url "chart:index" %}";
+                let standingsInfo = {{ standings_info|safe }};
+            </script>
             <script type="text/javascript" src={% static "chart/js/plot.js" %}></script>
         {% endif %}
     </body>
